@@ -273,8 +273,8 @@
 
         update = () => {
             if(onHold){
-                rot = 5*(touchPos[1]-initTouchPos[1])
-                tilt = 5*(touchPos[0]-initTouchPos[0])
+                tilt = .5*(touchPos[1]-initTouchPos[1])
+                rot = .5*(touchPos[0]-initTouchPos[0])
                 console.log(initTouchPos, touchPos)
                 document.documentElement.style.setProperty("--rot", `${rot}deg`)
                 document.documentElement.style.setProperty("--tilt", `${tilt}deg`)
