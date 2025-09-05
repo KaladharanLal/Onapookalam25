@@ -12,7 +12,7 @@
         }
         body{
           background-color: rgb(255, 237, 184);
-          color: rgb(255, 255, 255);
+          color: rgb(0, 0, 0);
           letter-spacing: .4rem;
           height: 100vh;
           overflow: hidden;
@@ -28,10 +28,16 @@
           transform: translate(-50%, -50%) rotateX(var(--tilt)) rotateZ(var(--rot)) scale(1); /* Apply 3D transforms */
           transform-origin: center center; /* Set the origin of the transform */
         }
+        h3{
+            position: absolute;
+            text-align: center;
+            left: 50%;
+            transform: translate(-50%);
+        }
     </style>
 </head>
 <body>
-
+<h3>touch to intract</h3>
     <div class="base">
         <svg
     width="500"
