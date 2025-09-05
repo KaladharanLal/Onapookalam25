@@ -272,14 +272,28 @@
         var onHold = false;
 
         update = () => {
-            rot = 5*(initTouchPos[0]-touchPos[0])
-            document.documentElement.style.setProperty("--rot", `${rot}deg`)
-            document.documentElement.style.setProperty("--tilt", `${tilt}deg`)
+            if(onHold){
+                rot = 5*(touchPos[1]-initTouchPos[1])
+                tilt = 5*(touchPos[0]-initTouchPos[0])
+                console.log(initTouchPos, touchPos)
+                document.documentElement.style.setProperty("--rot", `${rot}deg`)
+                document.documentElement.style.setProperty("--tilt", `${tilt}deg`)
+            }
         }
 
         window.addEventListener('mousedown', (event) => 
         {
             onHold = true;
+            var e = event;
+            if (e.type == 'mousedown' || e.type == 'mouseup' || e.type == 'mousemove' || e.type == 'mouseover'|| e.type=='mouseout' || e.type=='mouseenter' || e.type=='mouseleave')
+            {
+                x = e.clientX;
+                y = e.clientY;
+            }
+            y = window.innerHeight - y
+            //console.log(x,y)
+            initTouchPos[0] = x;
+            initTouchPos[1] = y;
         });
         window.addEventListener('mousemove', (event) => 
         {
@@ -293,10 +307,11 @@
             //console.log(x,y)
             touchPos[0] = x;
             touchPos[1] = y;
-            if(isInitTouch)
-            {
-                initTouchPos = touchPos;
-            }
+            // if(isInitTouch)
+            // {
+            //     initTouchPos = touchPos;
+            //     isInitTouch = false;
+            // }
             update();
         });
         window.addEventListener('mouseup', (event) => 
@@ -308,6 +323,16 @@
         window.addEventListener('touchstart', (event) => 
         {
             onHold = true;
+            var e = event;
+            if (e.type == 'mousedown' || e.type == 'mouseup' || e.type == 'mousemove' || e.type == 'mouseover'|| e.type=='mouseout' || e.type=='mouseenter' || e.type=='mouseleave')
+            {
+                x = e.clientX;
+                y = e.clientY;
+            }
+            y = window.innerHeight - y
+            //console.log(x,y)
+            initTouchPos[0] = x;
+            initTouchPos[1] = y;
         });
         window.addEventListener('touchmove', (event) => 
         {
@@ -323,10 +348,11 @@
             //console.log(x,y)
             touchPos[0] = x;
             touchPos[1] = y;
-            if(isInitTouch)
-            {
-                initTouchPos = touchPos;
-            }
+            // if(isInitTouch)
+            // {
+            //     initTouchPos = touchPos;
+            //     isInitTouch = false;
+            // }
             update();
         });
         window.addEventListener('touchend', (event) => 
